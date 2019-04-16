@@ -1,6 +1,6 @@
 Name     : haskell-random
 Version  : 1.1
-Release  : 1
+Release  : 2
 URL      : http://hackage.haskell.org/package/random-1.1/random-1.1.tar.gz
 Source0  : http://hackage.haskell.org/package/random-1.1/random-1.1.tar.gz
 Summary  : No detailed summary available
@@ -20,7 +20,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 export SOURCE_DATE_EPOCH=1555363563
-runhaskell Setup configure --ghc --global \
+runhaskell Setup configure --ghc \
 --enable-static \
 --enable-shared \
 --enable-profiling \
@@ -28,18 +28,19 @@ runhaskell Setup configure --ghc --global \
 --enable-library-vanilla \
 --enable-optimization=2 \
 --prefix=/usr \
---dynlibdir=/usr/lib64/ghc-8.6.4/random-1.1 \
---libsubdir=/usr/lib64/ghc-8.6.4/random-1.1 \
---docdir=/usr/share/package-licenses/haskell-random
+--libsubdir=/usr/lib64/\$compiler/\$pkgid \
+--dynlibdir=/usr/lib64/\$compiler/\$pkgid \
+--docdir=/usr/share/doc/haskell-random
 runhaskell Setup build
 runhaskell Setup register --gen-pkg-config
 
 %install
 export SOURCE_DATE_EPOCH=1555363563
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/haskell-random
-cp LICENSE %{buildroot}/usr/share/package-licenses/haskell-random/LICENSE
+mkdir -p %{buildroot}
 runhaskell Setup copy --destdir=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/haskell-random
+mv %{buildroot}/usr/share/doc/haskell-random/LICENSE %{buildroot}/usr/share/package-licenses/haskell-random/LICENSE
 mkdir -p %{buildroot}/usr/lib64/ghc-8.6.4/package.conf.d
 cp random-1.1.conf %{buildroot}/usr/lib64/ghc-8.6.4/package.conf.d/random-1.1.conf
 
