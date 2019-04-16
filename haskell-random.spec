@@ -1,6 +1,6 @@
 Name     : haskell-random
 Version  : 1.1
-Release  : 2
+Release  : 3
 URL      : http://hackage.haskell.org/package/random-1.1/random-1.1.tar.gz
 Source0  : http://hackage.haskell.org/package/random-1.1/random-1.1.tar.gz
 Summary  : No detailed summary available
@@ -9,7 +9,8 @@ License  : BSD-3-Clause-Clear
 BuildRequires: ghc-dev
 
 %description
-The Haskell Standard Library -- Random Number Generation
+This package provides a basic random number generation library, including the
+ability to split random number generators.
 
 %prep
 %setup -q -n random-1.1
