@@ -1,6 +1,6 @@
 Name     : haskell-random
 Version  : 1.1
-Release  : 3
+Release  : 4
 URL      : http://hackage.haskell.org/package/random-1.1/random-1.1.tar.gz
 Source0  : http://hackage.haskell.org/package/random-1.1/random-1.1.tar.gz
 Summary  : No detailed summary available
@@ -31,7 +31,8 @@ runhaskell Setup configure --ghc \
 --prefix=/usr \
 --libsubdir=/usr/lib64/\$compiler/\$pkgid \
 --dynlibdir=/usr/lib64/\$compiler/\$pkgid \
---docdir=/usr/share/doc/haskell-random
+--docdir=/usr/share/doc/haskell-random \
+--datasubdir=/usr/share/haskell-random
 runhaskell Setup build
 runhaskell Setup register --gen-pkg-config
 
